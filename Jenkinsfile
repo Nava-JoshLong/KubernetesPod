@@ -23,7 +23,8 @@ pipeline {
     stage('Docker Image Life Length Test') {
       steps {
         container('docker') {  
-          sh '''docker ps --format "{{.Names}}"'''  // when we run docker in this step, we're running it via a shell on the docker build-pod container, 
+          sh '''con=$(docker ps --filter name=k8s_docker_promo-app-* -aq)
+          docker exec -it $con uname'''  // when we run docker in this step, we're running it via a shell on the docker build-pod container, 
         }
       }
     }
