@@ -20,5 +20,12 @@ pipeline {
         }
       }
     }
+    stage('Docker Image Life Length Test') {
+      steps {
+        container('docker') {  
+          sh "docker ps"  // when we run docker in this step, we're running it via a shell on the docker build-pod container, 
+        }
+      }
+    }
   }
 }
