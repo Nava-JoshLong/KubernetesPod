@@ -24,7 +24,7 @@ pipeline {
       steps {
         container('docker') {  
           sh '''con=$(docker ps --filter name=k8s_docker_promo-app-* -aq)
-          docker exec -it $con uname'''  // when we run docker in this step, we're running it via a shell on the docker build-pod container, 
+          docker exec -i $con uname'''  // when we run docker in this step, we're running it via a shell on the docker build-pod container, 
         }
       }
     }
